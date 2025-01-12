@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Shop Payment</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background-color: #3e683d;
+            color: #fff;
+            font-size: 18px;
+        }
+        header img {
+            height: 50px;
+        }
+        header .qty {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        header .qty button {
+            background-color: #fff;
+            color: #3e683d;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        header .qty button:hover {
+            background-color: #e0e0e0;
+        }
+        header .text {
+            margin-left: 10px;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+        .card, .card1 {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .card h3, .card1 h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .card input[type="text"], .card1 input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .payment-methods {
+            margin-bottom: 20px;
+        }
+        .payment-methods label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        button.confirm-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #3e683d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button.confirm-btn:hover {
+            background-color: #3e683d;
+        }
+        .billing-details div {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .card, .card1 {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://africageographic.com/wp-content/uploads/2024/04/Team.png" alt="Parrot Logo">
+        <div class="text">Parrot</div>
+        <div class="qty">
+            <button id="decrement">-</button>
+            <input type="text" id="quantity" value="1" readonly>
+            <button id="increment">+</button>
+        </div>
+        <div class="text">Rs. <span id="price">5000</span></div>
+    </header>
+    <main>
+        <div class="card">
+            <h3>Shipping & Payment</h3>
+            <input type="text" id="address" placeholder="Shipping address">
+            <input type="text" id="coupon" placeholder="Coupon code">
+            <div class="payment-methods">
+                <h4>Payment Methods</h4>
+                <label><input type="radio" name="payment" value="COD" checked> Cash on Delivery</label>
+                <label><input type="radio" name="payment" value="GPAY"> Google Pay</label>
+                <label><input type="radio" name="payment" value="CARD"> Credit/Debit Card</label>
+                <label><input type="radio" name="payment" value="PHONE_PAY"> Phone Pay</label>
+            </div>
+            <button class="confirm-btn" onclick="confirmPayment()">Confirm Payment</button>
+        </div>
+        <div class="card1">
+            <h3>Billing Details</h3>
+            <div class="billing-details">
+                <div>GST: Rs. <input type="number" id="gst-input" value="500"></div>
+                <div>Tax Invoice: Rs. <input type="number" id="tax-input" value="200"></div>
+                <div>Delivery Charge: Rs. <input type="number" id="delivery-charge-input" value="100"></div>
+                <div>Total Amount: Rs. <span id="total-amount">5800</span></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        $(document).ready(function() {
+            const unitPrice = 5000;
+            const $quantity = $('#quantity');
+            const $price = $('#price');
+            const $totalAmount = $('#total-amount');
+
+            function updateTotal() {
+                const quantity = parseInt($quantity.val());
+                const gst = parseFloat($('#gst-input').val());
+                const tax = parseFloat($('#tax-input').val());
+                const deliveryCharge = parseFloat($('#delivery-charge-input').val());
+                const totalPrice = quantity * unitPrice;
+                const totalAmount = totalPrice + gst + tax + deliveryCharge;
+                $price.text(totalPrice);
+                $totalAmount.text(totalAmount);
+            }
+
+            $('#increment').click(function() {
+                let qty = parseInt($quantity.val());
+                qty++;
+                $quantity.val(qty);
+                updateTotal();
+            });
+
+            $('#decrement').click(function() {
+                let qty = parseInt($quantity.val());
+                if (qty > 1) {
+                    qty--;
+                    $quantity.val(qty);
+                    updateTotal();
+                }
+            });
+
+            $('#gst-input, #tax-input, #delivery-charge-input').on('input', updateTotal);
+            updateTotal();
+        });
+
+        function confirmPayment() {
+            const isConfirmed = confirm("Are you sure you want to proceed?");
+            if (isConfirmed) {
+                alert("Payment confirmed!");
+                window.location.href = "1.html";
+            } else {
+                alert("Payment canceled!");
+            }
+        }
+    </script>
+</body>
+</html>

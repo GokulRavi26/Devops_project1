@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Shop-Description</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .card-container {
+            display: flex; 
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap; 
+        }
+        .card {
+            width: 400px;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #88a182;
+            box-shadow: 0 4px 8px rgba(139, 226, 145, 0.1);
+            text-align: left;
+        }
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .images img {
+            display: none;
+            width: 100%;
+            height: 250px;
+        }
+        #image1 {
+            display: block; 
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        .buttons button {
+            margin: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 2px solid #000;
+            background-color: #f0f0f0;
+            color: #000;
+            transition: background-color 0.3s ease;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+        .star {
+            font-size: 30px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star.selected {
+            color: #ffd700;
+        }
+        .qty {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        .qty button {
+            width: 10px;
+            height: 30px;
+            color: green;
+            font-size: 18px;
+        }
+        .qty input {
+            width: 50px;
+            text-align: center;
+        }
+        .price {
+            font-size: 18px;
+            color: green;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .delivery {
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+        .card .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .card button {
+            flex: auto;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="images">
+                <img src="https://static.toiimg.com/thumb/111907701/111907701.jpg?height=746&width=420&resizemode=76&imgsize=42634" id="image1" alt="Parrot 1">
+                <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/q/5/w/medium-za-9210-a-beautiful-green-colour-parrot-wall-decor-poster-original-imagjfygeffyvyze.jpeg?q=90&crop=false" id="image2" alt="Parrot 2">
+                <img src="https://m.media-amazon.com/images/I/71GXqew8QuL.jpg" id="image3" alt="Parrot 3">
+            </div>
+            <div class="buttons">
+                <button id="btn1">1</button>
+                <button id="btn2">2</button>
+                <button id="btn3">3</button>
+            </div>
+            <div class="description">
+                <h2>Parrot</h2>
+                <p>This is a parrot.</p>
+            </div>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <div class="price">Price: Rs.5000</div>
+            <div class="delivery">In Stock</div>
+            <div class="qty">
+                <button id="decrement">-</button>
+                <input type="text" id="quantity" value="1" readonly>
+                <button id="increment">+</button>
+            </div>
+            <div class="delivery">Expected Delivery: Jan 12, 2025</div>
+            <div class="buttons">
+                <button onclick="redirectt()">Buy</button>
+                <button onclick="toggle()">Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#btn1").click(function () {
+                $(".images img").hide();
+                $("#image1").show();
+            });
+
+            $("#btn2").click(function () {
+                $(".images img").hide();
+                $("#image2").show();
+            });
+
+            $("#btn3").click(function () {
+                $(".images img").hide();
+                $("#image3").show();
+            });
+        });
+
+        const decrementBtn = document.getElementById('decrement');
+        const incrementBtn = document.getElementById('increment');
+        const quantityInput = document.getElementById('quantity');
+
+        decrementBtn.addEventListener('click', () => {
+            let qty = parseInt(quantityInput.value);
+            if (qty > 1) {
+                quantityInput.value = qty - 1;
+            }
+        });
+
+        incrementBtn.addEventListener('click', () => {
+            let qty = parseInt(quantityInput.value);
+            quantityInput.value = qty + 1;
+        });
+
+        function redirectt() {
+            window.location.href = "3.html";
+        }
+
+        function toggle() {
+            const isConfirmed = confirm("Are you sure you want to add to cart?");
+            if (isConfirmed) {
+                alert("Added to Cart!!!!!");
+            } else {
+                alert("Unable to add to Cart!!!!");
+            }
+        }
+
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                stars.forEach(s => s.classList.remove('selected'));
+                star.classList.add('selected');
+                const rating = star.getAttribute('data-value');
+                for (let i = 0; i < rating; i++) {
+                    stars[i].classList.add('selected');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

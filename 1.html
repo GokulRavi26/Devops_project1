@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Shop-Home</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background-color: #3e683d;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            height: 50px;
+            width: auto;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .icons img {
+            height: 30px;
+            width: auto;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        nav {
+            background-color: #444;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        nav .menu-item {
+            margin: 0 15px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        nav .menu-item:hover {
+            background-color: #555;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        .card img {
+            width: 100%;
+            cursor: pointer;
+            height: 250px
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .description {
+            padding: 15px;
+        }
+        .description h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .description p {
+            margin: 10px 0 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <img src="https://i.etsystatic.com/18025753/r/il/361cf4/2979996709/il_fullxfull.2979996709_o4xg.jpg" alt="Logo" />
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." />
+        </div>
+        <div class="icons">
+            <img src="D:/cart.png" onclick="redirectToCart()" alt="Cart" />
+            <img src="D:/profile.png" onclick="redirectToProfile()" alt="Profile" />
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="menu-item" onclick="redirectToHome()">Home</div>
+        <div class="menu-item" onclick="redirectToShop()">Shop</div>
+        <div class="menu-item" onclick="redirectToAbout()">About</div>
+        <div class="menu-item" onclick="redirectToContact()">Contact</div>
+    </nav>
+
+    <!-- Card Section -->
+    <div class="container">
+        <div class="card">
+            <img src="https://africageographic.com/wp-content/uploads/2024/04/Team.png" alt="Parrot" onclick="redirectToDetails()" />
+            <div class="description">
+                <h2>Parrot</h2>
+                <p>Colorful and talkative bird.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://media.audubon.org/sfw_emblematicpicture.jpg" alt="Finches" onclick="redirectToDetails()" />
+            <div class="description">
+                <h2>Finches</h2>
+                <p>Small and chirpy bird.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://cdn.pixabay.com/photo/2016/11/22/22/21/bird-1850910_960_720.jpg" alt="Peacock" onclick="redirectToDetails()" />
+            <div class="description">
+                <h2>Love Bird</h2>
+                <p>Elegant bird with colorful feathers.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.thesprucepets.com/thmb/wtjX_DK2jsq_amjYpKK8klsQPg4=/1975x0/filters:no_upscale():strip_icc()/GettyImages-597187685-58ad8e7a3df78c345b864b4f.jpg" alt="Owl" onclick="redirectToDetails()" />
+            <div class="description">
+                <h2>CockTail</h2>
+                <p>Wise bird of the night.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://img.pikbest.com/origin/10/42/48/32JpIkbEsTbzm.jpg!w700wp" alt="Crow" onclick="redirectToDetails()" />
+            <div class="description">
+                <h2>Macow</h2>
+                <p>Smart and resourceful bird.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://cdn.dotpe.in/longtail/store-items/7562157/OhR2vGyI.jpeg" alt="Flamingo" onclick="redirectToDetails()" />
+            <div class="description">
+                <h2>African Love Birds</h2>
+                <p>Graceful bird with long legs.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirectToCart() {
+            window.location.href = "cart.html";
+        }
+        function redirectToProfile() {
+            window.location.href = "profile.html";
+        }
+        function redirectToHome() {
+            window.location.href = "1.html";
+        }
+        function redirectToShop() {
+            window.location.href = "2.html";
+        }
+        function redirectToAbout() {
+            window.location.href = "about.html";
+        }
+        function redirectToContact() {
+            window.location.href = "contact.html";
+        }
+        function redirectToDetails() {
+            window.location.href = "2.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bird Shop-Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background-color: #3e683d;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .profile-header img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .profile-header h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .profile-header button {
+      background-color: #3e683d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .profile-header button:hover {
+      background-color: #3e683d;
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px 0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tab.active {
+      color: #007bff;
+      border-bottom: 3px solid #3e683d;
+    }
+
+    .content-section {
+      display: none;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .orders-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .orders-table th, .orders-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .orders-table th {
+      background-color: #f4f4f9;
+    }
+
+    .address-list, .settings {
+      list-style: none;
+      padding: 0;
+    }
+
+    .address-list li, .settings li {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f4f4f9;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Profile</h1>
+    <button onclick="redirectToCart()"> Logout </button>
+  </header>
+
+  <div class="container">
+    <div class="profile-header">
+      <div>
+        <img src="https://www.unesco.org/sites/default/files/styles/paragraph_medium_desktop/public/2022-04/godwin-angeline-benjo-An7LvVMb6rY-unsplash.jpeg?itok=3STf8JD9" alt="Profile Picture">
+        <h2>Dhanu</h2>
+      </div>
+      <button>Edit Profile</button>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-target="orders">Order History</div>
+      <div class="tab" data-target="addresses">Addresses</div>
+      <div class="tab" data-target="settings">Settings</div>
+    </div>
+
+    <div class="content-section active" id="orders">
+      <h3>Order History</h3>
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2024-01-10</td>
+            <td>Delivered</td>
+            <td>Rs.120.00</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2024-01-05</td>
+            <td>In Transit</td>
+            <td>Rs.80.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="content-section" id="addresses">
+      <h3>Saved Addresses</h3>
+      <ul class="address-list">
+        <li>123 Main St, Thindal, Erode</li>
+        <li>456 ADC St, Perundurai, TamilNadu</li>
+      </ul>
+    </div>
+
+    <div class="content-section" id="settings">
+      <h3>Settings</h3>
+      <ul class="settings">
+        <li>Change Password</li>
+        <li>Update Email</li>
+        <li>Notification Preferences</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('.content-section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+    function redirectToCart() {
+            window.location.href = "login.html";
+        }
+  </script>
+</body>
+</html>
