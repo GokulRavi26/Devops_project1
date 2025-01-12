@@ -57,7 +57,7 @@
     }
 
     .profile-header button:hover {
-      background-color: #3e683d;
+      background-color: #2e4c29;
     }
 
     .tabs {
@@ -72,11 +72,16 @@
       padding: 10px 0;
       cursor: pointer;
       font-weight: bold;
+      transition: background-color 0.3s ease;
     }
 
     .tab.active {
       color: #007bff;
       border-bottom: 3px solid #3e683d;
+    }
+
+    .tab:hover {
+      background-color: #e0e0e0;
     }
 
     .content-section {
@@ -119,7 +124,7 @@
 <body>
   <header>
     <h1>My Profile</h1>
-    <button onclick="redirectToCart()"> Logout </button>
+    <button onclick="redirectToCart()">Logout</button>
   </header>
 
   <div class="container">
@@ -184,7 +189,6 @@
   </div>
 
   <script>
-    // Tab functionality
     const tabs = document.querySelectorAll('.tab');
     const sections = document.querySelectorAll('.content-section');
 
@@ -197,9 +201,10 @@
         document.getElementById(tab.dataset.target).classList.add('active');
       });
     });
+
     function redirectToCart() {
-            window.location.href = "index.html";
-        }
+      window.location.href = "index.html";
+    }
   </script>
 </body>
 </html>
