@@ -38,17 +38,48 @@
             display: block; 
         }
         .buttons {
-            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px auto;
         }
         .buttons button {
-            margin: 5px;
-            padding: 5px 10px;
-            font-size: 16px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Circular buttons */
+            font-size: 18px;
             cursor: pointer;
             background-color: #f0f0f0;
             color: #000;
             transition: background-color 0.3s ease;
-            border-radius:50%;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .buttons button:hover {
+            background-color: #d0d0d0;
+        }
+        .buttonsss {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 20px auto;
+        }
+        .buttonsss button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 20px; /* Rounded edges for Buy and Add to Cart */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .buttonsss button:hover {
+            background-color: #45a049;
         }
         .star-rating {
             display: flex;
@@ -66,29 +97,29 @@
             color: #ffd700;
         }
         .qty {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    margin: 0 auto; 
-    margin-bottom: 15px;
-    gap: 10px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            margin: 0 auto; 
+            margin-bottom: 15px;
+            gap: 10px;
+        }
 
-.qty button {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    color: green;
-    font-size: 18px;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-}
+        .qty button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            color: green;
+            font-size: 18px;
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+        }
 
-.qty input {
-    width: 50px;
-    text-align: center;
-}
+        .qty input {
+            width: 50px;
+            text-align: center;
+        }
 
         .price {
             font-size: 18px;
@@ -100,28 +131,6 @@
             font-size: 14px;
             color: #555;
             text-align: center;
-        }
-        .card .buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            border-radius:50%;
-            height:30px;
-            width:30px;
-        }
-        .card .buttonsss {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            height:50px;
-            width:75px;
-            border-radius:25%;
-        }
-        .card button {
-            justify-content: center;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
         }
         .description h2 {
             margin: 0;
@@ -174,7 +183,6 @@
                 <span class="star" data-value="5">&#9733;</span>
             </div>
         </div>
-
     </div>
 
     <script>
