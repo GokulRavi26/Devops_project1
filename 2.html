@@ -167,6 +167,9 @@
         <li><strong>Shelter:</strong> 
             Parrots need a spacious cage or aviary that allows for movement and flight. The cage should be made of non-toxic materials, include perches of varying sizes, and provide opportunities for climbing and playing. Ensure the environment is well-ventilated and free from drafts.
         </li>
+        <li><strong>Behavior:</strong> 
+            Parrots are social and intelligent birds known for their ability to mimic sounds and human speech. They require mental stimulation, interaction, and plenty of toys to prevent boredom and destructive behaviors.
+        </li>
         <li><strong>Care:</strong> 
             Parrots need daily attention, interaction, and grooming. Regularly clean their cage, provide fresh food and water, and ensure they get sufficient out-of-cage time for exercise. Regular vet check-ups are also important.
         </li>
@@ -175,9 +178,6 @@
         <a href="#" onclick="showMore(event)" style="color: blue; text-decoration: underline; cursor: pointer;">Click here for more</a>
     </p>
     <div id="moreDetails" style="display: none; margin-top: 10px;">
-         <li><strong>Behavior:</strong> 
-            Parrots are social and intelligent birds known for their ability to mimic sounds and human speech. They require mental stimulation, interaction, and plenty of toys to prevent boredom and destructive behaviors.
-        </li>
         <p><strong>Details:</strong> 
             Parrots are part of the Psittaciformes family, which includes over 400 species, such as macaws, cockatoos, and lovebirds. These birds are native to tropical and subtropical regions, including South America, Africa, and Asia. They are known for their vibrant plumage and long lifespans, with some species living up to 80 years.
         </p>
@@ -194,7 +194,7 @@
     </div>
 </div>
            
-             <div class="text">Rs. <span id="total">5000</span></div>
+             <div class="text">Rs. <div id="price">5000</div></div>
             <div class="delivery">In Stock</div>
             <div class="qty">
                 <button id="decrement">-</button>
@@ -238,29 +238,34 @@
         const decrementBtn = document.getElementById('decrement');
         const incrementBtn = document.getElementById('increment');
         const quantityInput = document.getElementById('quantity');
-        const totalDisplay = document.getElementById('total');
-        function updateTotal() {
-    const qty = parseInt(quantityInput.value)||1;
-    const total = qty * pricePerItem;
-    totalDisplay.textContent = total.toFixed(2); // Update total to 2 decimal places
-}
-       decrementBtn.addEventListener('click', () => {
-    let qty = parseInt(quantityInput.value) || 1;
-    if (qty > 1) {
-        qty -= 1;
-        quantityInput.value = qty;
-        updateTotal();
-    }
-});
 
-incrementBtn.addEventListener('click', () => {
-    let qty = parseInt(quantityInput.value) || 1;
-    qty += 1;
-    quantityInput.value = qty;
-    updateTotal();
-});
+        decrementBtn.addEventListener('click', () => {
+            let qty = parseInt(quantityInput.value);
+            if (qty > 1) {
+                quantityInput.value = qty - 1;
+            }
+        });
 
-        updateTotal();
+        incrementBtn.addEventListener('click', () => {
+            let qty = parseInt(quantityInput.value);
+            quantityInput.value = qty + 1;
+        });
+        $('#increment').click(function() {
+                let qty = parseInt($quantity.val());
+                qty++;
+                $quantity.val(qty);
+                updateTotal();
+            });
+
+            $('#decrement').click(function() {
+                let qty = parseInt($quantity.val());
+                if (qty > 1) {
+                    qty--;
+                    $quantity.val(qty);
+                    updateTotal();
+                }
+            });
+
         function redirectt() {
             window.location.href = "3.html";
         }
@@ -273,7 +278,11 @@ incrementBtn.addEventListener('click', () => {
                 alert("Unable to add to Cart!!!!");
             }
         }
-
+         function showMore(event) {
+        event.preventDefault(); 
+        const details = document.getElementById('moreDetails');
+        details.style.display = details.style.display === 'none' ? 'block' : 'none';
+    }
         const stars = document.querySelectorAll('.star');
         stars.forEach(star => {
             star.addEventListener('click', () => {
@@ -285,11 +294,7 @@ incrementBtn.addEventListener('click', () => {
                 }
             });
         });
-         function showMore(event) {
-        event.preventDefault(); 
-        const details = document.getElementById('moreDetails');
-        details.style.display = details.style.display === 'none' ? 'block' : 'none';
-    }
+        
     </script>
 </body>
 </html>
