@@ -88,13 +88,13 @@
             }
 
             .cart-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
+                flex-direction: row; /* Ensure the buttons stay next to each other */
+                justify-content: center; /* Center the buttons */
+                gap: 10px; /* Add some space between the buttons */
             }
 
             .cart-buttons button {
-                width: 100%;
+                width: auto; /* Remove the 100% width from buttons */
             }
 
             table, th, td {
