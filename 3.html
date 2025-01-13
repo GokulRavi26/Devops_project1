@@ -139,7 +139,16 @@
         <div class="text">Rs. <span id="price">5000</span></div>
     </header>
     <main>
-        <div class="card">
+        <div class="card1">
+            <h3>Billing Details</h3>
+            <div class="billing-details">
+                <div>GST: Rs. <input type="number" id="gst-input" value="500"></div>
+                <div>Tax Invoice: Rs. <input type="number" id="tax-input" value="200"></div>
+                <div>Delivery Charge: Rs. <input type="number" id="delivery-charge-input" value="100"></div>
+                <div>Total Amount: Rs. <span id="total-amount">5800</span></div>
+            </div>
+        </div>
+         <div class="card">
             <h3>Shipping & Payment</h3>
             <input type="text" id="address" placeholder="Shipping address">
             <input type="text" id="coupon" placeholder="Coupon code">
@@ -151,15 +160,6 @@
                 <label><input type="radio" name="payment" value="PHONE_PAY"> Phone Pay</label>
             </div>
             <button class="confirm-btn" onclick="confirmPayment()">Confirm Payment</button>
-        </div>
-        <div class="card1">
-            <h3>Billing Details</h3>
-            <div class="billing-details">
-                <div>GST: Rs. <input type="number" id="gst-input" value="500"></div>
-                <div>Tax Invoice: Rs. <input type="number" id="tax-input" value="200"></div>
-                <div>Delivery Charge: Rs. <input type="number" id="delivery-charge-input" value="100"></div>
-                <div>Total Amount: Rs. <span id="total-amount">5800</span></div>
-            </div>
         </div>
     </main>
     <script>
